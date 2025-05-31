@@ -1,6 +1,6 @@
 on: push
 env:
-    BASE_URL: /cutest # Insert your repository name here if you're going to host it without custom domain
+    BASE_URL: ./ # Insert your repository name here if you're going to host it without custom domain
 jobs:
     build:
         runs-on: ubuntu-latest
