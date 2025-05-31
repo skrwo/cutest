@@ -97,7 +97,8 @@ h2 {
 }
 
 summary,
-li label {
+li label,
+input[type="checkbox"] {
     cursor: pointer;
 }
 
