@@ -1,0 +1,24 @@
+@import "./base.css";
+
+:root {
+    --color-background: light-dark(#f6f6f6, #25272e);
+    --color-text: light-dark(#25272e, #f6f6f6);
+    --color-checkbox: light-dark(#27b9c6, #f6f6f6);
+    --color-border: light-dark(#27b9c6, #f6f6f6);
+    --color-border-hover: light-dark(#25272e, #f6f6f6);
+    --width-border: 3px;
+    --color-focus: #27b9c6;
+}
+
+input[type="button"],
+input[type="submit"] {
+    &:hover {
+        opacity: 1;
+    }
+
+    transition: all 0.2s ease 0s;
+
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}

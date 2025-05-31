@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" href="/favicon_fkze.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Тест на невинність ФКЗЕ</title>
+        <meta name="og:title" content="Тест на невинність ФКЗЕ імені Пса Патрона" />
+        <meta
+            name="og:description"
+            content="Дізнайтеся, наскільки ви «чистий» студент. Викладачам проходити заборонено"
+        />
+    </head>
+    <body>
+        <div id="app"></div>
+        <script type="module">
+            import "../assets/fkze.css"
+
+            import { createApp } from "vue"
+            import App from "../App.vue"
+
+            function calculateScore(test, result) {
+                return Math.round((result.checkboxes.length / test.questions.length) * 100)
+            }
+
+            createApp(App, { test: "fkze", calculateScore }).mount("#app")
+        </script>
+    </body>
+</html>
