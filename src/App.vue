@@ -98,8 +98,8 @@ async function share() {
                         <label :for="`q${index + 1}`">{{ question }}</label>
                     </li>
                 </ol>
-                <button type="submit">Розрахувати результати</button>
-                <button type="button" @click="clearCheckboxes">Очистити тест</button>
+                <button type="submit" class="controls">Розрахувати результати</button>
+                <button type="button" class="controls" @click="clearCheckboxes">Очистити тест</button>
                 <input type="hidden" name="_" value="" />
             </form>
         </div>
@@ -121,8 +121,8 @@ async function share() {
                 </div>
             </div>
             <div id="result-controls">
-                <a :href="currentPath" id="back-to-test">Відкрити тест</a>
-                <button type="button" id="share-result" @click="share">Поділитися результатом</button>
+                <a :href="currentPath" class="controls">Відкрити тест</a>
+                <button type="button" class="controls" @click="share">Поділитися результатом</button>
             </div>
         </div>
     </main>

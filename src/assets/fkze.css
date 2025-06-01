@@ -10,14 +10,14 @@
     --color-focus: #27b9c6;
 }
 
-button,
-a {
+.controls {
     &:hover {
         opacity: 1;
     }
 
     transition: all 0.2s ease 0s;
 
+    font-weight: bolder;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 1px;
