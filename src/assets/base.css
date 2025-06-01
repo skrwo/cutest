@@ -97,7 +97,7 @@ input[type="checkbox"] {
     background-color: #00000000;
     user-select: none;
 
-    text &:hover {
+    &:hover {
         opacity: 0.5;
         border-color: var(--color-border-hover);
     }
