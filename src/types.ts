@@ -9,6 +9,7 @@ export interface ITest {
     title: string
     description?: string
     subtitle?: string
+    score_unit?: string
     questions: string[]
     ranks: IRank[]
 }
