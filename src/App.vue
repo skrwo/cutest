@@ -79,8 +79,8 @@ function clearCheckboxes() {
                         <label :for="`q${index + 1}`">{{ question }}</label>
                     </li>
                 </ol>
-                <input type="submit" value="Розрахувати результати" />
-                <input type="button" value="Очистити тест" @click="clearCheckboxes" />
+                <button type="submit">Розрахувати результати</button>
+                <button type="button" @click="clearCheckboxes">Очистити тест</button>
                 <input type="hidden" name="_" value="" />
             </form>
         </div>
@@ -90,15 +90,15 @@ function clearCheckboxes() {
                 <h1>Не вдалося обробити результат тесту :(</h1>
             </dialog>
             <div v-if="rank">
-                <h1>{{ rank.icon }}</h1>
-                <h2>{{ score }}</h2>
-                <h3>{{ rank.name }}</h3>
-                <p>{{ rank.description }}</p>
+                <h1 id="icon">{{ rank.icon }}</h1>
+                <h2 id="score">{{ score }}</h2>
+                <h3 id="rank-name">{{ rank.name }}</h3>
+                <p id="rank-description">{{ rank.description }}</p>
                 <details v-if="resultData.checkboxes.length" open>
-                    <summary>Галочки</summary>
-                    <p>{{ resultData.checkboxes.join(", ") }}</p>
+                    <summary id="checkboxes-title">Галочки</summary>
+                    <p id="checkboxes-details">{{ resultData.checkboxes.join(", ") }}</p>
                 </details>
-                <a :href="currentPath">Відкрити тест</a>
+                <a :href="currentPath" id="back-to-test">Відкрити тест</a>
             </div>
         </div>
     </main>

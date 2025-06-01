@@ -106,8 +106,7 @@ input[type="checkbox"] {
     accent-color: var(--color-checkbox);
 }
 
-input[type="button"],
-input[type="submit"] {
+button {
     margin: 0.2rem 0.5rem;
     padding: 0.5rem 1rem;
     border: var(--width-border) solid var(--color-border);

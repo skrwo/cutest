@@ -10,8 +10,7 @@
     --color-focus: #27b9c6;
 }
 
-input[type="button"],
-input[type="submit"] {
+button {
     &:hover {
         opacity: 1;
     }
