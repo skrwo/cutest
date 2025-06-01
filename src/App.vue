@@ -70,7 +70,7 @@ async function share() {
 
     const shareData = {
         title: testData.value?.title,
-        text: `Я отримав(-ла) ${score.value} ${testData.value?.score_unit ?? ""} - ${rank.value?.name}`,
+        text: `${rank.value?.icon ?? ""} Я отримав(-ла) ${score.value} ${testData.value?.score_unit ?? ""} - ${rank.value?.name}`.trim(),
         url: shareURL.toString()
     }
 
