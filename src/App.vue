@@ -62,6 +62,25 @@ function clearCheckboxes() {
         .querySelectorAll<HTMLInputElement>("input[type=checkbox]:checked")
         .forEach((c) => (c.checked = false))
 }
+
+async function share() {
+
+    const shareURL = new URL(window.location.href)
+    shareURL.hash = ""
+
+    const shareData = {
+        title: testData.value?.title,
+        text: `Я отримав(-ла) ${score.value} ${testData.value?.score_unit ?? ""} - ${rank.value?.name}`,
+        url: shareURL.toString()
+    }
+
+    try {
+        if (!navigator.canShare || !navigator.canShare(shareData)) return alert("Sharing is not available in your browser! :(")
+        await navigator.share(shareData)
+    } catch (e) {
+        alert(`Sharing error:\n${e}`)
+    }
+}
 </script>
 
 <template>
@@ -89,16 +108,21 @@ function clearCheckboxes() {
             <dialog :open="!rank">
                 <h1>Не вдалося обробити результат тесту :(</h1>
             </dialog>
-            <div v-if="rank">
-                <h1 id="icon">{{ rank.icon }}</h1>
-                <h2 id="score">{{ score }}</h2>
-                <h3 id="rank-name">{{ rank.name }}</h3>
-                <p id="rank-description">{{ rank.description }}</p>
-                <details v-if="resultData.checkboxes.length" open>
-                    <summary id="checkboxes-title">Галочки</summary>
-                    <p id="checkboxes-details">{{ resultData.checkboxes.join(", ") }}</p>
-                </details>
+            <div id="result-info" v-if="rank">
+                <h1 id="rank-icon">{{ rank.icon }}</h1>
+                <h2 id="score">{{ `${score} ${testData.score_unit ?? ""}`.trimEnd() }}</h2>
+                <h1 id="rank-name">{{ rank.name }}</h1>
+                <div id="rank-details">
+                    <p id="rank-description">{{ rank.description }}</p>
+                    <details v-if="resultData.checkboxes.length" open>
+                        <summary id="checkboxes-title">Галочки</summary>
+                        <p id="checkboxes-details">{{ resultData.checkboxes.join(", ") }}</p>
+                    </details>
+                </div>
+            </div>
+            <div id="result-controls">
                 <a :href="currentPath" id="back-to-test">Відкрити тест</a>
+                <button type="button" id="share-result" @click="share">Поділитися результатом</button>
             </div>
         </div>
     </main>

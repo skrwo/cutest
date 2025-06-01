@@ -10,7 +10,8 @@
     --color-focus: #27b9c6;
 }
 
-button {
+button,
+a {
     &:hover {
         opacity: 1;
     }
