@@ -77,8 +77,8 @@ async function share() {
     try {
         if (!navigator.canShare || !navigator.canShare(shareData)) return alert("Sharing is not available in your browser! :(")
         await navigator.share(shareData)
-    } catch (e) {
-        alert(`Sharing error:\n${e}`)
+    } catch (err) {
+        if (err instanceof Error && err.name !== "AbortError") alert(`Sharing error:\n${err}`)
     }
 }
 </script>
