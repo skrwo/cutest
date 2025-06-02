@@ -22,8 +22,8 @@ const score = computed(() =>
 const rank = computed(() =>
     score.value != null
         ? testData.value?.ranks?.find(
-            (r) => r.scores[0] <= score.value! && score.value! <= r.scores[1],
-        )
+              (r) => r.scores[0] <= score.value! && score.value! <= r.scores[1],
+          )
         : undefined,
 )
 
@@ -64,18 +64,18 @@ function clearCheckboxes() {
 }
 
 async function share() {
-
     const shareURL = new URL(window.location.href)
     shareURL.hash = ""
 
     const shareData = {
         title: testData.value?.title,
         text: `${rank.value?.icon ?? ""} Я отримав(-ла) ${score.value} ${testData.value?.score_unit ?? ""} - ${rank.value?.name}`.trim(),
-        url: shareURL.toString()
+        url: shareURL.toString(),
     }
 
     try {
-        if (!navigator.canShare || !navigator.canShare(shareData)) return alert("Sharing is not available in your browser! :(")
+        if (!navigator.canShare || !navigator.canShare(shareData))
+            return alert("Sharing is not available in your browser! :(")
         await navigator.share(shareData)
     } catch (err) {
         if (err instanceof Error && err.name !== "AbortError") alert(`Sharing error:\n${err}`)
@@ -94,12 +94,19 @@ async function share() {
                 <h2 v-if="testData.subtitle">{{ testData.subtitle }}</h2>
                 <ol>
                     <li v-for="(question, index) in testData.questions" :key="question">
-                        <input type="checkbox" :id="`q${index + 1}`" :name="`${index + 1}`" value="" />
+                        <input
+                            type="checkbox"
+                            :id="`q${index + 1}`"
+                            :name="`${index + 1}`"
+                            value=""
+                        />
                         <label :for="`q${index + 1}`">{{ question }}</label>
                     </li>
                 </ol>
                 <button type="submit" class="controls">Розрахувати результати</button>
-                <button type="button" class="controls" @click="clearCheckboxes">Очистити тест</button>
+                <button type="button" class="controls" @click="clearCheckboxes">
+                    Очистити тест
+                </button>
                 <input type="hidden" name="_" value="" />
             </form>
         </div>
@@ -122,7 +129,9 @@ async function share() {
             </div>
             <div id="result-controls">
                 <a :href="currentPath" class="controls">Відкрити тест</a>
-                <button type="button" class="controls" @click="share">Поділитися результатом</button>
+                <button type="button" class="controls" @click="share">
+                    Поділитися результатом
+                </button>
             </div>
         </div>
     </main>
